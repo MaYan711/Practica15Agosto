@@ -1,27 +1,32 @@
 package org.example.models;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
 import java.util.UUID;
 
 @Getter
 @Setter
-
-
-public class VideoGame {
+@EqualsAndHashCode(of = "id")
+public class VideoGame implements Serializable {
 
     private final UUID id;
     private String title;
-    private int HoursPlayed;
+    private int hoursPlayed;
     private boolean completed;
 
-    public VideoGame(String title, int hoursPlayed) {
+    public VideoGame(String title, int hoursPlayed, boolean completed) {
         this.id = UUID.randomUUID();
         this.title = title;
-        this.HoursPlayed = hoursPlayed;
+        this.hoursPlayed = hoursPlayed;
         this.completed = completed;
     }
 
     @Override
     public String toString() {
-        return this.title + " - " + this.id + " - " + this.completed;
+        return this.title + " " + this.id + " " + this.hoursPlayed + " " + this.completed;
     }
+
 }
